@@ -224,3 +224,6 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
            WHERE size = '$size'";
          $result = odbc_exec($conn, $query);
       ?>`
+SQL UPDATE cũng dễ bị tấn công. Những truy vấn này cũng bị đe dọa bằng cách cắt và thêm một truy vấn hoàn toàn mới vào nó. Nhưng kẻ tấn công có thể lúng túng với SETđiều khoản. Trong trường hợp này, một số thông tin lược đồ phải được sở hữu để thao tác truy vấn thành công. Điều này có thể đạt được bằng cách kiểm tra các tên biến biểu mẫu, hoặc chỉ đơn giản là ép buộc thô bạo. Không có quá nhiều quy ước đặt tên cho các trường lưu trữ mật khẩu hoặc tên người dùng.
+
+Ví dụ # 3 Từ đặt lại mật khẩu ... đến nhận được nhiều đặc quyền hơn (bất kỳ máy chủ cơ sở dữ liệu nào)
