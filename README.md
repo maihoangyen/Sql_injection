@@ -35,7 +35,7 @@
    
  <br> 1.2 Cài đặt mysql<a name="my"></a></br>
  
- <br> 1.3 Khái niệm INFORMATION_SCHEMA<a name="hni"></a></br>
+ <br> 1.3 Khái niệm INFORMATION_SCHEMA<a name="kni"></a></br>
  
   - INFORMATION_SCHEMA là 1 database nằm bên trong 1 máy chủ MySQL, lưu thông tin về tất cả các database khác mà máy chủ MySQL đang lưu giữ. INFORMATION_SCHEMA chứa các table read-only. Chúng thực chất là các view, chứ không phải các table thực sự, do đó không có file nào liên kết với chúng, và chúng ta không thể đặt trigger lên các table này. Ngoài ra thì không có thư mục của database này trong máy chủ MySQL. Vì các table trong database này là read-only, nên chúng ta chỉ có thể sử dụng lệnh SELECT trên chúng, các lệnh INSERT, UPDATE và DELETE sẽ không chạy được trên database này.
       
