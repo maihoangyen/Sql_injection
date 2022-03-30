@@ -15,9 +15,9 @@
        1.5 [Các câu lệnh trong INFORMATION_SCHEMA](#upl)
       
  2. [Thực hành lab](#dangnhap)
- 3. [Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng, Code mẫu](#dangki)
+ 3. [Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng](#dangki)
  
-       3.1 [Khái niệm](#kn)
+       3.1 [Khái niệm sqli](#kn)
       
        3.2 [Xảy ra khi nào](#dn)
       
@@ -25,7 +25,7 @@
        
        3.4 [Khắc phục](#dow)
       
-       3.5 [Dẫn chứng và code mẫu](#se)
+       3.5 [Dẫn chứng](#se)
           
  4. [Cách nhúng sql vào php](#dangxuat)
  
@@ -134,7 +134,7 @@
  </table>
  <br> 1.5 Các câu lệnh trong INFORMATION_SCHEMA<a name="kn"></a></br>
  
-  - Để Hiển thị TABLESvà COLUMNStrong cơ sở dữ liệu hoặc tìm TABLESvà COLUMNS.Truy vấn đầu tiên này sẽ trả về tất cả các bảng trong cơ sở dữ liệu mà chúng ta đang truy vấn.
+  - Để Hiển thị TABLESvà COLUMNS trong cơ sở dữ liệu hoặc tìm TABLES và COLUMNS.Truy vấn đầu tiên này sẽ trả về tất cả các bảng trong cơ sở dữ liệu mà chúng ta đang truy vấn.
 
     `SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES`
  
@@ -151,4 +151,20 @@
     ` IF EXISTS( SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE COLUMN_NAME = 'Title')
     SELECT 'found' AS search_result ELSE SELECT 'not found' AS search_result;`
     
-  - Sử dụng INFORMATION_SCHEMAchế độ xem trong nguồn dữ liệu của chúng ta có thể là một cách đáng tin cậy để xác định những gì có trong nguồn dữ liệu trong khi chúng ta xây dựng các truy vấn của mình.
+  - Sử dụng INFORMATION_SCHEMA chế độ xem trong nguồn dữ liệu của chúng ta có thể là một cách đáng tin cậy để xác định những gì có trong nguồn dữ liệu trong khi chúng ta xây dựng các truy vấn của mình.
+#### 2. Thực hành lab <a name="gioithieu"></a>
+#### 3. Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng. <a name="gioithieu"></a>
+
+ <br> 3.1 Khái niệm sqli <a name="kn"></a></br>
+  - SQL injection là kĩ thuật cho phép các kẻ tấn công chèn và thực thi các lệnh SQL bất hợp pháp (mà người phát triển không lường trước được) bên trong hệ thống, bằng cách lợi dụng các lỗ hổng bảo mật từ dữ liệu nhập vào của các ứng dụng. Qua đó làm lộ thông tin trong cơ sở dữ liệu, tạo ra sự sai lệch hoặc gây ra hư hỏng dữ liệu của hệ thống.
+Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc truyền vào các mã SQL thông qua các ô nhập liệu, để làm thay đổi ngay mục đích câu truy vấn ban đầu. Với định nghĩa trên, ta khả năng tạm chia SQL injection thành một vài loại chính sau đây dựa vào cách tấn công dữ liệu truyền vào:
+   - Tấn công: không mã hóa kí tự nhập
+   - Tấn công: không kiểm tra kiểu dữ liệu nhập
+
+ <br> 3.2 Xảy ra khi nào <a name="kn"></a></br>
+ 
+ <br> 3.3 Tác hại <a name="kn"></a></br>
+ 
+ <br> 3.4 Khắc phục <a name="kn"></a></br>
+ 
+ <br> 3.5 Dẫn chứng <a name="kn"></a></br>
