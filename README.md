@@ -136,7 +136,12 @@
  
   - Để Hiển thị TABLESvà COLUMNStrong cơ sở dữ liệu hoặc tìm TABLESvà COLUMNS.Truy vấn đầu tiên này sẽ trả về tất cả các bảng trong cơ sở dữ liệu mà chúng ta đang truy vấn.
 
- `SELECT
-  	TABLE_NAME
-FROM
-  	INFORMATION_SCHEMA.TABLES`
+ `SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES`
+  - Truy vấn thứ hai sẽ trả về danh sách tất cả các cột và bảng trong cơ sở dữ liệu mà chúng ta đang truy vấn.
+  `SELECT TABLE_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS` 
+  - Hoặc, chúng ta cũng có thể chỉ truy vấn COLUMNS từ một bảng cụ thể và trả về tên cột từ bảng cụ thể 'Album' trong cơ sở dữ liệu.
+  `SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Album'`
+  - Tiếp theo, chúng ta có thể tìm xem có hay không TABLE nguồn dữ liệu khớp với một số loại tham số tìm kiếm.
+  ` IF EXISTS( SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE COLUMN_NAME = 'Title')
+    SELECT 'found' AS search_result ELSE SELECT 'not found' AS search_result;`
+  - Sử dụng INFORMATION_SCHEMAchế độ xem trong nguồn dữ liệu của chúng ta có thể là một cách đáng tin cậy để xác định những gì có trong nguồn dữ liệu trong khi chúng ta xây dựng các truy vấn của mình.
