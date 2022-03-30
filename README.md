@@ -161,9 +161,52 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
     - Tấn công: không kiểm tra kiểu dữ liệu nhập
 
  <br> 3.2 Xảy ra khi nào <a name="kn"></a></br>
- 
+   - lỗi Sql injection thường xảy ra do hệ thống đã thiếu kiểm tra dữ liệu truyền vào. Điều này sẽ thay đổi ngay mục đích ban đầu của câu truy vấn và vì thế gây ra ra những tác động không mong muốn. 
  <br> 3.3 Tác hại <a name="kn"></a></br>
- 
+  - Thông tin đăng nhập bị đánh cắp: Sử dụng SQL Injection để tìm kiếm thông tin đăng nhập người dùng. Sau đó, những kẻ tấn công có thể mạo danh người dùng, sử dụng và thay đổi các quyền hạn của người dùng sẵn có.
+  - Truy cập cơ sở dữ liệu: Sử dụng SQL Injection để truy cập vào nguồn thông tin được lưu trữ trong máy chủ cơ sở dữ liệu. Điều này có thể gây ra những vấn đề nghiêm trọng cho các dữ liệu của toàn bộ hệ thống vận hành.
+  - Xóa dữ liệu: Sử dụng SQL Injection để xóa các bản ghi của cơ sở dữ liệu, bao gồm cả drop tables, gây ra những sự thay đổi hoặc phá vỡ các cấu trúc của cơ sở dữ liệu.
+  - Thay đổi dữ liệu: Sử dụng SQL Injection để chủ động thay đổi hoặc thêm dữ liệu mới vào cơ sở dữ liệu hiện tại, ảnh hưởng đến kết quả chiết xuất dữ liệu cuối cùng xảy ra những sai lệch.
+  
  <br> 3.4 Khắc phục <a name="kn"></a></br>
  
+  - Dọn dẹp: Bạn có thể sử dụng trình xác thực hoặc phần mềm làm sạch đầu vào, ứng dụng web chỉ chấp nhận một số đầu vào nhất định và từ chối những đầu vào không chấp nhận. Đây là phương pháp phổ biến, được người dùng sử dụng thường xuyên.
+
+  - Lọc và xác thực: Để lọc SQL Injection và ngăn chặn các mối đe dọa tiềm ẩn, bạn có thể cài đặt tường lửa (WAF). WAF sẽ lọc các đầu vào trong danh sách và sử dụng các phương pháp xác thực riêng biệt để ngăn các truy vấn SQL Injection. Danh sách sẽ được kiểm tra và cập nhật thường xuyên để thích ứng với mọi hoàn cảnh của doanh nghiệp.
+
+  - Giới hạn phạm vi của SQL Injection: Việc ngăn chặn hoàn toàn SQL Injection là rất khó thực hiện, tính khả thi không cao. Các chuyên gia trong lĩnh vực bảo mật sẽ phải thường xuyên kiểm tra để tối ưu hóa hiệu suất của phần mềm. WAF có thể xác minh chéo đầu vào với dữ liệu Giao thức Internet (IP) trước khi chặn yêu cầu.
+
+  - Tránh các URL không an toàn: Nếu một trang web không sử dụng Giao thức truyền siêu văn bản an toàn (HTTPS) hoặc sử dụng Lớp cổng bảo mật an toàn (SSL) và Bảo mật lớp truyền tải (TLS) để mã hóa. Những kẻ tấn công có thể sử dụng các URL chứa các cookie SQL Injection để giành quyền truy cập vào cơ sở dữ liệu của bạn.
  <br> 3.5 Dẫn chứng <a name="kn"></a></br>
+
+  -  Điểm để tấn công chính là tham số truyền vào câu truy vấn. Do vậy, cần phải đảm bảo thực hiện việc kiểm tra dữ liệu truyền vào từ người dùng, để tránh người dùng nhập vào những nội dung khả năng gây ra ra sai lệch khi thực hiện truy vấn. Để kiểm tra dữ liệu từ người dùng, ta cần lọc bớt những nội dung nguy hiểm. Giải pháp cho việc lọc dữ liệu này là dùng chuỗi được escape (mã hóa). Lưu ý: mình sẽ dùng từ “escape” để chỉ việc mã hóa cho sát nghĩa.
+
+  - Khi thực hiện escape một chuỗi, tức là mã hoá các kí tự đặc biệt của chuỗi (ví dụ như kí tự ‘, &, |, …) để nó không còn được hiểu là 1 kí tự đặc biệt nữa. Mỗi ngôn ngữ lập trình đều cung cấp các hàm để thực hiện escape chuỗi, trong `PHP` ta sẽ dùng hàm `mysqli_real_escape_string()` hoặc cũng khả năng dùng `addslashes()` để thực hiện điều này.
+
+  - Các tổ chức có thể tập trung vào những bước sau đây để bảo vệ mình khỏi những cuộc tấn công SQL Injection:
+
+   - Không bao giờ được tin tưởng những input người dùng nhập vào: Dữ liệu luôn phải được xác thực trước khi sử dụng trong các câu lệnh SQL.
+   - Các thủ tục được lưu trữ: Những thủ tục này có thể trừu tượng hóa các lệnh SQL và xem xét toàn bộ input như các tham số. Nhờ đó, nó không thể gây ảnh hưởng đến cú pháp lệnh SQL.
+   - Các lệnh được chuẩn bị sẵn: Điều này bao gồm việc tạo truy vấn SQL như hành động đầu tiên và sau đó xử lý toàn bộ dữ liệu được gửi như những tham số.
+   - Những cụm từ thông dụng: Những cụm từ này được sử dụng để phát hiện mã độc và loại bỏ nó trước khi câu lệnh SQL được thực hiện.
+   - Thông báo lỗi đúng: Thông báo lỗi phải tuyệt đối tránh tiết lộ những thông tin/chi tiết nhạy cảm và vị trí xảy ra lỗi trên thông báo lỗi.
+   - Giới hạn quyền truy cập của người dùng đối với cơ sở dữ liệu: Chỉ những tài khoản có quyền truy cập theo yêu cầu mới được kết nối với cơ sở dữ liệu. Điều này có thể giúp giảm thiểu những lệnh SQL được thực thi tự động trên server.
+   - Hãy loại bỏ các kí tự meta như ‘”/\; và các kí tự extend như NULL, CR, LF, … trong các string nhận được từ:
+   
+     >input do người dùng đệ trình
+     
+     >các tham số từ URL
+     
+     >các giá trị từ cookie
+     
+   - Đối với các giá trị numeric, hãy chuyển nó sang integer trước khi query SQL, hoặc dùng ISNUMERIC để chắc chắn nó là một số integer.
+   - Thay đổi “Startup and run SQL Server” dùng mức low privilege user trong tab SQL Server Security.
+   - Xóa các stored procedure trong database master mà không dùng như:
+   
+     >xp_cmdshell
+     
+     >xp_startmail
+     
+     >xp_sendmail
+     
+     >sp_makewebtask
