@@ -217,13 +217,24 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
 #### 4. Cách nhúng sql vào php <a name="ca"></a>
 
  - Một cách khả thi để lấy mật khẩu là phá vỡ các trang kết quả tìm kiếm của bạn. Điều duy nhất mà kẻ tấn công cần làm là xem liệu có bất kỳ biến đã gửi nào được sử dụng trong các câu lệnh SQL không được xử lý đúng cách hay không. Các bộ lọc này có thể được đặt thường ở dạng trước để tùy chỉnh WHERE, ORDER BY, LIMIT và OFFSET các mệnh đề trong SELECT câu lệnh. Nếu cơ sở dữ liệu của bạn hỗ trợ UNION cấu trúc, kẻ tấn công có thể cố gắng nối toàn bộ truy vấn vào truy vấn ban đầu để liệt kê mật khẩu từ một bảng tùy ý. Việc sử dụng các trường mật khẩu được mã hóa rất được khuyến khích.
-     >Ví dụ: Liệt kê các bài viết ... và một số mật khẩu (bất kỳ máy chủ cơ sở dữ liệu nào)
+     >Ví dụ: Liệt kê các bài viết ... và một số mật khẩu 
  
      `<?php
          $query  = "SELECT id, name, inserted, size FROM products
            WHERE size = '$size'";
          $result = odbc_exec($conn, $query);
       ?>`
-SQL UPDATE cũng dễ bị tấn công. Những truy vấn này cũng bị đe dọa bằng cách cắt và thêm một truy vấn hoàn toàn mới vào nó. Nhưng kẻ tấn công có thể lúng túng với SETđiều khoản. Trong trường hợp này, một số thông tin lược đồ phải được sở hữu để thao tác truy vấn thành công. Điều này có thể đạt được bằng cách kiểm tra các tên biến biểu mẫu, hoặc chỉ đơn giản là ép buộc thô bạo. Không có quá nhiều quy ước đặt tên cho các trường lưu trữ mật khẩu hoặc tên người dùng.
-
-Ví dụ # 3 Từ đặt lại mật khẩu ... đến nhận được nhiều đặc quyền hơn (bất kỳ máy chủ cơ sở dữ liệu nào)
+ - SQL UPDATE cũng dễ bị tấn công. Những truy vấn này cũng bị đe dọa bằng cách cắt và thêm một truy vấn hoàn toàn mới vào nó. Nhưng kẻ tấn công có thể lúng túng với SET điều khoản. Trong trường hợp này, một số thông tin lược đồ phải được sở hữu để thao tác truy vấn thành công. Điều này có thể đạt được bằng cách kiểm tra các tên biến biểu mẫu, hoặc chỉ đơn giản là ép buộc thô bạo. Không có quá nhiều quy ước đặt tên cho các trường lưu trữ mật khẩu hoặc tên người dùng.
+    >Ví dụ: Từ đặt lại mật khẩu ... đến nhận được nhiều đặc quyền hơn 
+    
+    `<?php
+        $query = "UPDATE usertable SET pwd='$pwd' WHERE uid='$uid';";
+    `?>
+ - Nhưng nếu một người dùng độc hại gửi giá trị ' or uid like'%admin% cho $ uid để thay đổi mật khẩu của quản trị viên hoặc chỉ cần đặt $ pwd để hehehe', trusted=100, admin='yes có được nhiều đặc quyền hơn, thì truy vấn sẽ bị xoắn:
+    >Ví dụ:    
+    `<?php
+       // $uid: ' or uid like '%admin%
+          $query = "UPDATE usertable SET pwd='...' WHERE uid='' or uid like '%admin%';";
+      // $pwd: hehehe', trusted=100, admin='yes
+         $query = "UPDATE usertable SET pwd='hehehe', trusted=100, admin='yes' WHERE...;";
+    ?>`
