@@ -215,3 +215,13 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
 <br> 3.5 Dẫn chứng <a name="dc"></a></br>
 
 #### 4. Cách nhúng sql vào php <a name="ca"></a>
+
+ - Một cách khả thi để lấy mật khẩu là phá vỡ các trang kết quả tìm kiếm của bạn. Điều duy nhất mà kẻ tấn công cần làm là xem liệu có bất kỳ biến đã gửi nào được sử dụng trong các câu lệnh SQL không được xử lý đúng cách hay không. Các bộ lọc này có thể được đặt thường ở dạng trước để tùy chỉnh WHERE, ORDER BY, LIMIT và OFFSET các mệnh đề trong SELECT câu lệnh. Nếu cơ sở dữ liệu của bạn hỗ trợ UNION cấu trúc, kẻ tấn công có thể cố gắng nối toàn bộ truy vấn vào truy vấn ban đầu để liệt kê mật khẩu từ một bảng tùy ý. Việc sử dụng các trường mật khẩu được mã hóa rất được khuyến khích.
+ >Ví dụ: Liệt kê các bài viết ... và một số mật khẩu (bất kỳ máy chủ cơ sở dữ liệu nào)
+  `<?php
+
+$query  = "SELECT id, name, inserted, size FROM products
+           WHERE size = '$size'";
+$result = odbc_exec($conn, $query);
+
+?>`
