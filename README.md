@@ -162,6 +162,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
 
  <br> 3.2 Xảy ra khi nào <a name="kn"></a></br>
    - lỗi Sql injection thường xảy ra do hệ thống đã thiếu kiểm tra dữ liệu truyền vào. Điều này sẽ thay đổi ngay mục đích ban đầu của câu truy vấn và vì thế gây ra ra những tác động không mong muốn. 
+   
  <br> 3.3 Tác hại <a name="kn"></a></br>
   - Thông tin đăng nhập bị đánh cắp: Sử dụng SQL Injection để tìm kiếm thông tin đăng nhập người dùng. Sau đó, những kẻ tấn công có thể mạo danh người dùng, sử dụng và thay đổi các quyền hạn của người dùng sẵn có.
   - Truy cập cơ sở dữ liệu: Sử dụng SQL Injection để truy cập vào nguồn thông tin được lưu trữ trong máy chủ cơ sở dữ liệu. Điều này có thể gây ra những vấn đề nghiêm trọng cho các dữ liệu của toàn bộ hệ thống vận hành.
