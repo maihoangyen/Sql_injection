@@ -41,4 +41,28 @@
       
  <br> 1.4 Các table trong INFORMATION_SCHEMA<a name="kn"></a></br>
  
+ <table align="center">
+   <tr>
+        <td align="center" ><b>Tên table</b></td>
+        <td align="center"><b>Định nghĩa</b></td>
+        <td align="center"><b>Định vị địa lý</b></td>
+        <td align="center"><b>Tương thích trình duyệt</b></td>
+        <td align="center"><b>Phiên bản</b></td>
+        <td align="center"><b>Hỗ trợ đa phương tiện</b></td>
+        <td align="center"><b>Lưu trữ</b></td>
+        <td align="center"><b>Giao tiếp</b></td>
+        <td align="center"><b>Đồ họa</b></td>  
+   </tr>
+   <tr>
+        <td align="center" ><b>Nội dung</b></td>
+        <td align="center"><b>Định nghĩa</b></td>
+        <td align="center"><b>Định vị địa lý</b></td>
+        <td align="center"><b>Tương thích trình duyệt</b></td>
+        <td align="center"><b>Phiên bản</b></td>
+        <td align="center"><b>Hỗ trợ đa phương tiện</b></td>
+        <td align="center"><b>Lưu trữ</b></td>
+        <td align="center"><b>Giao tiếp</b></td>
+        <td align="center"><b>Đồ họa</b></td>  
+   </tr>
+ </table>
  <br> 1.5 Các câu lệnh trong INFORMATION_SCHEMA<a name="kn"></a></br>
