@@ -154,12 +154,11 @@
   - Sử dụng INFORMATION_SCHEMA chế độ xem trong nguồn dữ liệu của chúng ta có thể là một cách đáng tin cậy để xác định những gì có trong nguồn dữ liệu trong khi chúng ta xây dựng các truy vấn của mình.
 #### 2. Thực hành lab <a name="gioithieu"></a>
 #### 3. Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng. <a name="gioithieu"></a>
-
  <br> 3.1 Khái niệm sqli <a name="kn"></a></br>
   - SQL injection là kĩ thuật cho phép các kẻ tấn công chèn và thực thi các lệnh SQL bất hợp pháp (mà người phát triển không lường trước được) bên trong hệ thống, bằng cách lợi dụng các lỗ hổng bảo mật từ dữ liệu nhập vào của các ứng dụng. Qua đó làm lộ thông tin trong cơ sở dữ liệu, tạo ra sự sai lệch hoặc gây ra hư hỏng dữ liệu của hệ thống.
 Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc truyền vào các mã SQL thông qua các ô nhập liệu, để làm thay đổi ngay mục đích câu truy vấn ban đầu. Với định nghĩa trên, ta khả năng tạm chia SQL injection thành một vài loại chính sau đây dựa vào cách tấn công dữ liệu truyền vào:
-   - Tấn công: không mã hóa kí tự nhập
-   - Tấn công: không kiểm tra kiểu dữ liệu nhập
+    - Tấn công: không mã hóa kí tự nhập
+    - Tấn công: không kiểm tra kiểu dữ liệu nhập
 
  <br> 3.2 Xảy ra khi nào <a name="kn"></a></br>
  
