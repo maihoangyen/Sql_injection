@@ -149,7 +149,8 @@
   - Tiếp theo, chúng ta có thể tìm xem có hay không TABLE nguồn dữ liệu khớp với một số loại tham số tìm kiếm.
   
     ` IF EXISTS( SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE COLUMN_NAME = 'Title')
-    SELECT 'found' AS search_result ELSE SELECT 'not found' AS search_result;`
+    
+      SELECT 'found' AS search_result ELSE SELECT 'not found' AS search_result;`
     
   - Sử dụng INFORMATION_SCHEMA chế độ xem trong nguồn dữ liệu của chúng ta có thể là một cách đáng tin cậy để xác định những gì có trong nguồn dữ liệu trong khi chúng ta xây dựng các truy vấn của mình.
   
