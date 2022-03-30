@@ -220,9 +220,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
  >Ví dụ: Liệt kê các bài viết ... và một số mật khẩu (bất kỳ máy chủ cơ sở dữ liệu nào)
  
   `<?php
-
-$query  = "SELECT id, name, inserted, size FROM products
+      $query  = "SELECT id, name, inserted, size FROM products
            WHERE size = '$size'";
-$result = odbc_exec($conn, $query);
-
-?>`
+      $result = odbc_exec($conn, $query);
+  ?>`
