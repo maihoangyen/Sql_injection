@@ -4,42 +4,42 @@
  ### MỤC LỤC
  1. [Cài đặt xampp, mysql. Tìm hiểu về database: information_schema](#gioithieu)
 
-       1.1 [Cài đặt xampp](#kn)
+       1.1 [Cài đặt xampp](#xap)
       
-       1.2 [Cài đặt mysql](#dn)
+       1.2 [Cài đặt mysql](#my)
  
-       1.3 [Khái niệm](#kn)
+       1.3 [Khái niệm INFORMATION_SCHEMA](#kni)
       
-       1.4 [Các table trong INFORMATION_SCHEMA](#dn)
+       1.4 [Các table trong INFORMATION_SCHEMA](#tab)
       
-       1.5 [Các câu lệnh trong INFORMATION_SCHEMA](#upl)
+       1.5 [Các câu lệnh trong INFORMATION_SCHEMA](#cc)
       
- 2. [Thực hành lab](#dangnhap)
- 3. [Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng](#dangki)
+ 2. [Thực hành lab](#tha)
+ 3. [Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng](#ths)
  
-       3.1 [Khái niệm sqli](#kn)
+       3.1 [Khái niệm sqli](#kns)
       
-       3.2 [Xảy ra khi nào](#dn)
+       3.2 [Xảy ra khi nào](#xa)
       
-       3.3 [Tác hại](#upl)
+       3.3 [Tác hại](#th)
        
-       3.4 [Khắc phục](#dow)
+       3.4 [Khắc phục](#kp)
       
-       3.5 [Dẫn chứng](#se)
+       3.5 [Dẫn chứng](#dc)
           
- 4. [Cách nhúng sql vào php](#dangxuat)
+ 4. [Cách nhúng sql vào php](#ca)
  
 ### Nội dung báo cáo 
 #### 1. Cài đặt xampp, mysql. Tìm hiểu về database: information_schema <a name="gioithieu"></a>
- <br> 1.1 Cài đặt xampp <a name="kn"></a></br>
+ <br> 1.1 Cài đặt xampp <a name="xap"></a></br>
    
- <br> 1.2 Cài đặt mysql<a name="kn"></a></br>
+ <br> 1.2 Cài đặt mysql<a name="my"></a></br>
  
- <br> 1.3 Khái niệm INFORMATION_SCHEMA<a name="kn"></a></br>
+ <br> 1.3 Khái niệm INFORMATION_SCHEMA<a name="hni"></a></br>
  
   - INFORMATION_SCHEMA là 1 database nằm bên trong 1 máy chủ MySQL, lưu thông tin về tất cả các database khác mà máy chủ MySQL đang lưu giữ. INFORMATION_SCHEMA chứa các table read-only. Chúng thực chất là các view, chứ không phải các table thực sự, do đó không có file nào liên kết với chúng, và chúng ta không thể đặt trigger lên các table này. Ngoài ra thì không có thư mục của database này trong máy chủ MySQL. Vì các table trong database này là read-only, nên chúng ta chỉ có thể sử dụng lệnh SELECT trên chúng, các lệnh INSERT, UPDATE và DELETE sẽ không chạy được trên database này.
       
- <br> 1.4 Các table trong INFORMATION_SCHEMA<a name="kn"></a></br>
+ <br> 1.4 Các table trong INFORMATION_SCHEMA<a name="tab"></a></br>
  
  <table align="center">
    <tr>
@@ -132,7 +132,7 @@
         <td><b>Chi tiết liên quan đến các chế độ xem được lưu trữ trong cơ sở dữ liệu</b></td>      
    </tr>
  </table>
- <br> 1.5 Các câu lệnh trong INFORMATION_SCHEMA<a name="kn"></a></br>
+ <br> 1.5 Các câu lệnh trong INFORMATION_SCHEMA<a name="cc"></a></br>
  
   - Để Hiển thị TABLESvà COLUMNS trong cơ sở dữ liệu hoặc tìm TABLES và COLUMNS.Truy vấn đầu tiên này sẽ trả về tất cả các bảng trong cơ sở dữ liệu mà chúng ta đang truy vấn.
 
@@ -152,24 +152,25 @@
     SELECT 'found' AS search_result ELSE SELECT 'not found' AS search_result;`
     
   - Sử dụng INFORMATION_SCHEMA chế độ xem trong nguồn dữ liệu của chúng ta có thể là một cách đáng tin cậy để xác định những gì có trong nguồn dữ liệu trong khi chúng ta xây dựng các truy vấn của mình.
-#### 2. Thực hành lab <a name="gioithieu"></a>
-#### 3. Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng. <a name="gioithieu"></a>
- <br> 3.1 Khái niệm sqli <a name="kn"></a></br>
+  
+#### 2. Thực hành lab <a name="tha"></a>
+#### 3. Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng. <a name="ths"></a>
+ <br> 3.1 Khái niệm sqli <a name="kns"></a></br>
   - SQL injection là kĩ thuật cho phép các kẻ tấn công chèn và thực thi các lệnh SQL bất hợp pháp (mà người phát triển không lường trước được) bên trong hệ thống, bằng cách lợi dụng các lỗ hổng bảo mật từ dữ liệu nhập vào của các ứng dụng. Qua đó làm lộ thông tin trong cơ sở dữ liệu, tạo ra sự sai lệch hoặc gây ra hư hỏng dữ liệu của hệ thống.
 Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc truyền vào các mã SQL thông qua các ô nhập liệu, để làm thay đổi ngay mục đích câu truy vấn ban đầu. Với định nghĩa trên, ta khả năng tạm chia SQL injection thành một vài loại chính sau đây dựa vào cách tấn công dữ liệu truyền vào:
     - Tấn công: không mã hóa kí tự nhập
     - Tấn công: không kiểm tra kiểu dữ liệu nhập
 
- <br> 3.2 Xảy ra khi nào <a name="kn"></a></br>
+ <br> 3.2 Xảy ra khi nào <a name="xa"></a></br>
    - lỗi Sql injection thường xảy ra do hệ thống đã thiếu kiểm tra dữ liệu truyền vào. Điều này sẽ thay đổi ngay mục đích ban đầu của câu truy vấn và vì thế gây ra ra những tác động không mong muốn. 
    
- <br> 3.3 Tác hại <a name="kn"></a></br>
+ <br> 3.3 Tác hại <a name="th"></a></br>
   - Thông tin đăng nhập bị đánh cắp: Sử dụng SQL Injection để tìm kiếm thông tin đăng nhập người dùng. Sau đó, những kẻ tấn công có thể mạo danh người dùng, sử dụng và thay đổi các quyền hạn của người dùng sẵn có.
   - Truy cập cơ sở dữ liệu: Sử dụng SQL Injection để truy cập vào nguồn thông tin được lưu trữ trong máy chủ cơ sở dữ liệu. Điều này có thể gây ra những vấn đề nghiêm trọng cho các dữ liệu của toàn bộ hệ thống vận hành.
   - Xóa dữ liệu: Sử dụng SQL Injection để xóa các bản ghi của cơ sở dữ liệu, bao gồm cả drop tables, gây ra những sự thay đổi hoặc phá vỡ các cấu trúc của cơ sở dữ liệu.
   - Thay đổi dữ liệu: Sử dụng SQL Injection để chủ động thay đổi hoặc thêm dữ liệu mới vào cơ sở dữ liệu hiện tại, ảnh hưởng đến kết quả chiết xuất dữ liệu cuối cùng xảy ra những sai lệch.
   
- <br> 3.4 Khắc phục <a name="kn"></a></br>
+ <br> 3.4 Khắc phục <a name="kp"></a></br>
  
   - Dọn dẹp: Bạn có thể sử dụng trình xác thực hoặc phần mềm làm sạch đầu vào, ứng dụng web chỉ chấp nhận một số đầu vào nhất định và từ chối những đầu vào không chấp nhận. Đây là phương pháp phổ biến, được người dùng sử dụng thường xuyên.
 
@@ -177,8 +178,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
 
   - Giới hạn phạm vi của SQL Injection: Việc ngăn chặn hoàn toàn SQL Injection là rất khó thực hiện, tính khả thi không cao. Các chuyên gia trong lĩnh vực bảo mật sẽ phải thường xuyên kiểm tra để tối ưu hóa hiệu suất của phần mềm. WAF có thể xác minh chéo đầu vào với dữ liệu Giao thức Internet (IP) trước khi chặn yêu cầu.
 
-  - Tránh các URL không an toàn: Nếu một trang web không sử dụng Giao thức truyền siêu văn bản an toàn (HTTPS) hoặc sử dụng Lớp cổng bảo mật an toàn (SSL) và Bảo mật lớp truyền tải (TLS) để mã hóa. Những kẻ tấn công có thể sử dụng các URL chứa các cookie SQL Injection để giành quyền truy cập vào cơ sở dữ liệu của bạn.
- <br> 3.5 Dẫn chứng <a name="kn"></a></br>
+  - Tránh các URL không an toàn: Nếu một trang web không sử dụng Giao thức truyền siêu văn bản an toàn (HTTPS) hoặc sử dụng Lớp cổng bảo mật an toàn (SSL) và Bảo mật lớp truyền tải (TLS) để mã hóa. Những kẻ tấn công có thể sử dụng các URL chứa các cookie SQL Injection để giành quyền truy cập vào cơ sở dữ liệu của bạn. 
 
   -  Điểm để tấn công chính là tham số truyền vào câu truy vấn. Do vậy, cần phải đảm bảo thực hiện việc kiểm tra dữ liệu truyền vào từ người dùng, để tránh người dùng nhập vào những nội dung khả năng gây ra ra sai lệch khi thực hiện truy vấn. Để kiểm tra dữ liệu từ người dùng, ta cần lọc bớt những nội dung nguy hiểm. Giải pháp cho việc lọc dữ liệu này là dùng chuỗi được escape (mã hóa). Lưu ý: mình sẽ dùng từ “escape” để chỉ việc mã hóa cho sát nghĩa.
 
@@ -211,3 +211,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
      >xp_sendmail
      
      >sp_makewebtask
+     
+<br> 3.5 Dẫn chứng <a name="dc"></a></br>
+
+#### 4. Cách nhúng sql vào php <a name="ca"></a>
