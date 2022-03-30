@@ -48,21 +48,26 @@
         
    </tr>
    <tr>
-        <td align="center" ><b>Nội dung</b></td>
-        <td align="center"><b>Định nghĩa</b></td>
-        <td align="center" ><b>Nội dung</b></td>
-        <td align="center"><b>Định nghĩa</b></td>
-        <td align="center" ><b>Nội dung</b></td>
-        <td align="center"><b>Định nghĩa</b></td>
-        <td align="center" ><b>Nội dung</b></td>
-        <td align="center"><b>Định nghĩa</b></td>
-        <td align="center" ><b>Nội dung</b></td>
-        <td align="center"><b>Định nghĩa</b></td>
-        <td align="center" ><b>Nội dung</b></td>
-        <td align="center"><b>Định nghĩa</b></td>
-        <td align="center" ><b>Nội dung</b></td>
-        <td align="center"><b>Định nghĩa</b></td>
-       
+        <td align="center" ><b>CHECK_CONSTRAINTS</b></td>
+        <td align="center"><b>chi tiết liên quan đến từng ràng buộc CHECK</b></td>      
    </tr>
+   <tr>
+        <td align="center" ><b>COLUMN_DOMAIN_USAGE</b></td>
+        <td align="center"><b>chi tiết liên quan đến các cột có kiểu dữ liệu bí danh</b></td>      
+   </tr>
+   <tr>
+        <td align="center" ><b>Nội dung</b></td>
+        <td align="center"><b>Định nghĩa</b></td>      
+   </tr>
+   <tr>
+        <td align="center" ><b>Nội dung</b></td>
+        <td align="center"><b>Định nghĩa</b></td>      
+   </tr>
+   <tr>
+        <td align="center" ><b>Nội dung</b></td>
+        <td align="center"><b>Định nghĩa</b></td>      
+   </tr>
+ 
+ 
  </table>
  <br> 1.5 Các câu lệnh trong INFORMATION_SCHEMA<a name="kn"></a></br>
