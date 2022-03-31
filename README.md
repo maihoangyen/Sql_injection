@@ -10,7 +10,12 @@
       
        1.3 [Các câu lệnh trong INFORMATION_SCHEMA](#cc)
       
- 2. [Thực hành lab](#tha)
+ 2. [Thực hành lab](#tha) 
+
+       2.1 [Phương pháp thủ công](#thucong)
+      
+       2.2 [Phương pháp sử dụng sqlmap](#sql)
+       
  3. [Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng](#ths)
  
        3.1 [Khái niệm sqli](#kns)
@@ -147,7 +152,7 @@
   - Sử dụng INFORMATION_SCHEMA chế độ xem trong nguồn dữ liệu của chúng ta có thể là một cách đáng tin cậy để xác định những gì có trong nguồn dữ liệu trong khi chúng ta xây dựng các truy vấn của mình.
   
 #### 2. Thực hành lab <a name="tha"></a>
- <br> 2.1 Phương pháp thủ công <a name="kns"></a></br>
+ <br> 2.1 Phương pháp thủ công <a name="thucong"></a></br>
   - B1: Kiểm tra IP của máy đang sử dụng bằng lệnh `ipconfig` (Linux)
   
       ![ipconfig](https://user-images.githubusercontent.com/101852647/161125758-c703e892-7aa9-45bc-92f3-d9af41a2ed69.png)
@@ -199,7 +204,7 @@
 
   - B13: Sau khi biết mật khẩu ở dạng là MD5 thì chúng ta giải mã mật khẩu và nhận được kết quả là: `P4ssw0rd`
   
- <br> 2.2 Phương pháp sử dụng sqlmap <a name="kns"></a></br>
+ <br> 2.2 Phương pháp sử dụng sqlmap <a name="sql"></a></br>
  
   - B1: Bây giờ chúng ta sẽ quét bằng ` sqlmap -u http://192.168.199.129:80/cat.php?id=1 --dbs` để có thể quét được database của nạn nhân
   
@@ -256,7 +261,7 @@
 
   - B14: Kiểm tra lại bằng cách gọi đường dẫn `192.168.199.129/admin/uploads/shell.PHP?cmd=whoami;id;uname -a` hiện lên thông báo như hình dưới đây. Chứng tỏ ta có thể sử dụng shell đã upload dưới dạng file php
   
-  ![image](https://user-images.githubusercontent.com/101852647/161139179-69704e04-efce-47ee-9528-e890c3f9dbc1.png)
+      ![image](https://user-images.githubusercontent.com/101852647/161139179-69704e04-efce-47ee-9528-e890c3f9dbc1.png)
 
 #### 3. Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng. <a name="ths"></a>
  <br> 3.1 Khái niệm sqli <a name="kns"></a></br>
