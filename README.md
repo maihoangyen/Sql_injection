@@ -147,6 +147,11 @@
   - Sử dụng INFORMATION_SCHEMA chế độ xem trong nguồn dữ liệu của chúng ta có thể là một cách đáng tin cậy để xác định những gì có trong nguồn dữ liệu trong khi chúng ta xây dựng các truy vấn của mình.
   
 #### 2. Thực hành lab <a name="tha"></a>
+ <br> 2.1 Phương pháp thủ công <a name="kns"></a></br>
+  - B1: Kiểm tra IP của máy đang sử dụng (Linux)
+      ![ipconfig](https://user-images.githubusercontent.com/101852647/161125443-f1188c65-4fb3-4d7e-b76e-70c32ea48009.png)
+ <br> 2.2 Phương pháp sử dụng sqlmap <a name="kns"></a></br>
+ 
 #### 3. Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng. <a name="ths"></a>
  <br> 3.1 Khái niệm sqli <a name="kns"></a></br>
   - SQL injection là kĩ thuật cho phép các kẻ tấn công chèn và thực thi các lệnh SQL bất hợp pháp (mà người phát triển không lường trước được) bên trong hệ thống, bằng cách lợi dụng các lỗ hổng bảo mật từ dữ liệu nhập vào của các ứng dụng. Qua đó làm lộ thông tin trong cơ sở dữ liệu, tạo ra sự sai lệch hoặc gây ra hư hỏng dữ liệu của hệ thống.
