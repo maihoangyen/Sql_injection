@@ -149,7 +149,9 @@
 #### 2. Thực hành lab <a name="tha"></a>
  <br> 2.1 Phương pháp thủ công <a name="kns"></a></br>
   - B1: Kiểm tra IP của máy đang sử dụng (Linux)
-      ![ipconfig](https://user-images.githubusercontent.com/101852647/161125443-f1188c65-4fb3-4d7e-b76e-70c32ea48009.png)
+  
+      ![ipconfig](https://user-images.githubusercontent.com/101852647/161125758-c703e892-7aa9-45bc-92f3-d9af41a2ed69.png)
+      
  <br> 2.2 Phương pháp sử dụng sqlmap <a name="kns"></a></br>
  
 #### 3. Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng. <a name="ths"></a>
