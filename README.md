@@ -151,7 +151,13 @@
   - B1: Kiểm tra IP của máy đang sử dụng (Linux)
   
       ![ipconfig](https://user-images.githubusercontent.com/101852647/161125758-c703e892-7aa9-45bc-92f3-d9af41a2ed69.png)
+     
+  - B2: Sử dụng Netdiscover để quét Giao thức ARP và nhận các thiết bị trên Mạng LAN Chúng ta có thể thấy rằng IP thứ ba là IP mong muốn và IP thứ hai là IP Kali của chúng ta
+  
+      ![image](https://user-images.githubusercontent.com/101852647/161126427-18d4dc5c-0098-4f76-bf12-03303e15f04a.png)
       
+      ![image](https://user-images.githubusercontent.com/101852647/161126470-1d03c162-2d4e-4752-a58d-4cd00de43dd6.png)
+
  <br> 2.2 Phương pháp sử dụng sqlmap <a name="kns"></a></br>
  
 #### 3. Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng. <a name="ths"></a>
