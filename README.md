@@ -271,7 +271,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
     - Tấn công: không kiểm tra kiểu dữ liệu nhập
 
  <br> 3.2 Xảy ra khi nào <a name="xa"></a></br>
-   - lỗi Sql injection thường xảy ra do hệ thống đã thiếu kiểm tra dữ liệu truyền vào. Điều này sẽ thay đổi ngay mục đích ban đầu của câu truy vấn và vì thế gây ra ra những tác động không mong muốn. 
+   - lỗi Sql injection thường xảy ra do hệ thống đã thiếu kiểm tra dữ liệu truyền vào. Điều này sẽ thay đổi ngay mục đích ban đầu của câu truy vấn và vì thế gây ra những tác động không mong muốn. 
    
  <br> 3.3 Tác hại <a name="th"></a></br>
   - Thông tin đăng nhập bị đánh cắp: Sử dụng SQL Injection để tìm kiếm thông tin đăng nhập người dùng. Sau đó, những kẻ tấn công có thể mạo danh người dùng, sử dụng và thay đổi các quyền hạn của người dùng sẵn có.
@@ -321,7 +321,6 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
      
      >sp_makewebtask
      
-<br> 3.5 Dẫn chứng <a name="dc"></a></br>
 
 #### 4. Cách nhúng sql vào php <a name="ca"></a>
 
