@@ -16,7 +16,7 @@
       
        2.2 [Phương pháp sử dụng sqlmap](#sql)
        
- 3. [Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục, Dẫn chứng](#ths)
+ 3. [Tìm hiểu sqli là gì, Xảy ra khi nào, Tác hại, Khắc phục](#ths)
  
        3.1 [Khái niệm sqli](#kns)
       
