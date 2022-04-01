@@ -25,8 +25,6 @@
        3.3 [Tác hại](#th)
        
        3.4 [Khắc phục](#kp)
-      
-       3.5 [Dẫn chứng](#dc)
           
  4. [Cách nhúng sql vào php](#ca)
  
