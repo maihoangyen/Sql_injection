@@ -1,6 +1,6 @@
  # <div align="center"><p> Sql_injection </p></div>
  ## Họ và tên: Mai Thị Hoàng Yến
- ## Ngày báo cáo: Ngày 31/3/2022
+ ## Ngày báo cáo: Ngày 1/4/2022
  ### MỤC LỤC
  1. [Cài đặt xampp, mysql. Tìm hiểu về database: information_schema](#gioithieu)
  
