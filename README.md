@@ -345,7 +345,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
         $query = "UPDATE usertable SET pwd='$pwd' WHERE uid='$uid';";
         
         ?>`
- - Nhưng nếu một người dùng độc hại gửi giá trị ' or uid like'%admin% cho $uid để thay đổi mật khẩu của quản trị viên hoặc chỉ cần đặt $ pwd để hehehe', trusted=100, admin='yes có được nhiều đặc quyền hơn, thì truy vấn sẽ bị xoắn:
+ - Nhưng nếu một người dùng độc hại gửi giá trị ' or uid like'%admin% cho $uid để thay đổi mật khẩu của quản trị viên hoặc chỉ cần đặt $ pwd để hehehe', trusted=100, admin='yes có được nhiều đặc quyền hơn
     >Ví dụ:  
       
        `<?php
