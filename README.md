@@ -293,25 +293,27 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
   - Nhận dữ liệu kiểu INT: Khi chúng ta nhận dữ liệu ID trên URL thì cách tốt nhất bạn nên ép kiểu, chuyển nó về kiểu số INT, sau đó chuyển về kiểu STRING (nếu cần thiết). Sau khi chúng ta thực hiện ép kiểu và chuyển nó về int và string thì cho dù ta nhập bất kì ký tự nào cũng sẽ bị clear ra khỏi.
    - Ví dụ: `$id = isset($_GET['id']) ? (string)(int)$_GET['id'] : false;`
   - Hoặc là chúng ta có thể dùng hàm `str_replace` để xóa đi những ký tự không phải là chữ số
-   - Ví dụ: `$id = isset($_GET['id']) ? $_GET['id'] : false;
+   - Ví dụ: 
+             `$id = isset($_GET['id']) ? $_GET['id'] : false;
  
              $id = str_replace('/[^0-9]/', '', $id);`
              
   - Sử dụng hàm sprintf: Trả về một chuỗi được định dạng. Trong hàm này nó sẽ có 2 tham số: 1 là chuỗi và nó chứa một đoạn Regex để thay thế. 2 là giá trị được thay thế tương ứng.
-   - Ví dụ: `$webname = 'hello';
+   - Ví dụ: 
+             `$webname = 'hello';
   
              $title = 'Xin chào các bạn';
              
              echo sprintf('Website %s laf website %s', $webname, $title);`
-  - Các tổ chức có thể tập trung vào những bước sau đây để bảo vệ mình khỏi những cuộc tấn công SQL Injection:
+ - Các tổ chức có thể tập trung vào những bước sau đây để bảo vệ mình khỏi những cuộc tấn công SQL Injection:
 
-    - Không bao giờ được tin tưởng những input người dùng nhập vào: Dữ liệu luôn phải được xác thực trước khi sử dụng trong các câu lệnh SQL.
-    - Các thủ tục được lưu trữ: Những thủ tục này có thể trừu tượng hóa các lệnh SQL và xem xét toàn bộ input như các tham số. Nhờ đó, nó không thể gây ảnh hưởng đến cú pháp lệnh SQL.
-    - Các lệnh được chuẩn bị sẵn: Điều này bao gồm việc tạo truy vấn SQL như hành động đầu tiên và sau đó xử lý toàn bộ dữ liệu được gửi như những tham số.
-    - Những cụm từ thông dụng: Những cụm từ này được sử dụng để phát hiện mã độc và loại bỏ nó trước khi câu lệnh SQL được thực hiện.
-    - Thông báo lỗi đúng: Thông báo lỗi phải tuyệt đối tránh tiết lộ những thông tin/chi tiết nhạy cảm và vị trí xảy ra lỗi trên thông báo lỗi.
-    - Giới hạn quyền truy cập của người dùng đối với cơ sở dữ liệu: Chỉ những tài khoản có quyền truy cập theo yêu cầu mới được kết nối với cơ sở dữ liệu. Điều này có thể giúp giảm thiểu những lệnh SQL được thực thi tự động trên server.
-    - Hãy loại bỏ các kí tự meta như ‘”/\; và các kí tự extend như NULL, CR, LF, … trong các string nhận được từ:
+   - Không bao giờ được tin tưởng những input người dùng nhập vào: Dữ liệu luôn phải được xác thực trước khi sử dụng trong các câu lệnh SQL.
+   - Các thủ tục được lưu trữ: Những thủ tục này có thể trừu tượng hóa các lệnh SQL và xem xét toàn bộ input như các tham số. Nhờ đó, nó không thể gây ảnh hưởng đến cú pháp lệnh SQL.
+   - Các lệnh được chuẩn bị sẵn: Điều này bao gồm việc tạo truy vấn SQL như hành động đầu tiên và sau đó xử lý toàn bộ dữ liệu được gửi như những tham số.
+   - Những cụm từ thông dụng: Những cụm từ này được sử dụng để phát hiện mã độc và loại bỏ nó trước khi câu lệnh SQL được thực hiện.
+   - Thông báo lỗi đúng: Thông báo lỗi phải tuyệt đối tránh tiết lộ những thông tin/chi tiết nhạy cảm và vị trí xảy ra lỗi trên thông báo lỗi.
+   - Giới hạn quyền truy cập của người dùng đối với cơ sở dữ liệu: Chỉ những tài khoản có quyền truy cập theo yêu cầu mới được kết nối với cơ sở dữ liệu. Điều này có thể giúp giảm thiểu những lệnh SQL được thực thi tự động trên server.
+   - Hãy loại bỏ các kí tự meta như ‘”/\; và các kí tự extend như NULL, CR, LF, … trong các string nhận được từ:
    
      >input do người dùng đệ trình
      
