@@ -291,18 +291,22 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
 
   - Khi thực hiện escape một chuỗi, tức là mã hoá các kí tự đặc biệt của chuỗi (ví dụ như kí tự ‘, &, |, …) để nó không còn được hiểu là 1 kí tự đặc biệt nữa. Mỗi ngôn ngữ lập trình đều cung cấp các hàm để thực hiện escape chuỗi, trong `PHP` ta sẽ dùng hàm `mysqli_real_escape_string()` hoặc cũng khả năng dùng `addslashes()` để thực hiện điều này.
   - Nhận dữ liệu kiểu INT: Khi chúng ta nhận dữ liệu ID trên URL thì cách tốt nhất bạn nên ép kiểu, chuyển nó về kiểu số INT, sau đó chuyển về kiểu STRING (nếu cần thiết). Sau khi chúng ta thực hiện ép kiểu và chuyển nó về int và string thì cho dù ta nhập bất kì ký tự nào cũng sẽ bị clear ra khỏi.
-   - Ví dụ: 
+    - Ví dụ: 
         
             `$id = isset($_GET['id']) ? (string)(int)$_GET['id'] : false;`
             
   - Hoặc là chúng ta có thể dùng hàm `str_replace` để xóa đi những ký tự không phải là chữ số
-   - Ví dụ: 
+    - Ví dụ: 
    
             `$id = isset($_GET['id']) ? $_GET['id'] : false;
              $id = str_replace('/[^0-9]/', '', $id);`
+  - Một cách khác là chúng ta tận dụng các bộ lọc tích hợp sẵn của PHP. Chúng ta sẽ sử dụng hàm `filter_input` để xác thực các biến từ các nguồn không an toàn. Nó sẽ nhận một biến bên ngoài và tùy chọn lọc nó. ví dụ bên dưới sử dụng bộ lọc `FILTER_VALIDATE_INT` bộ lọc này sẽ xác thực giá trị dưới dạng số nguyên, tùy chọn từ phạm vi được chỉ định và chuyển đổi thành int khi thành công.
+    - Ví dụ:
+    
+            `$id = filter_input( INPUT_GET, 'id', FILTER_VALIDATE_INT);`
              
   - Sử dụng hàm sprintf: Trả về một chuỗi được định dạng. Trong hàm này nó sẽ có 2 tham số: 1 là chuỗi và nó chứa một đoạn Regex để thay thế. 2 là giá trị được thay thế tương ứng.
-   - Ví dụ: 
+    - Ví dụ: 
    
             `$webname = 'hello';
              $title = 'Xin chào các bạn'; 
