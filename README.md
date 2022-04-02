@@ -291,7 +291,10 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
 
   - Khi thực hiện escape một chuỗi, tức là mã hoá các kí tự đặc biệt của chuỗi (ví dụ như kí tự ‘, &, |, …) để nó không còn được hiểu là 1 kí tự đặc biệt nữa. Mỗi ngôn ngữ lập trình đều cung cấp các hàm để thực hiện escape chuỗi, trong `PHP` ta sẽ dùng hàm `mysqli_real_escape_string()` hoặc cũng khả năng dùng `addslashes()` để thực hiện điều này.
   - Nhận dữ liệu kiểu INT: Khi chúng ta nhận dữ liệu ID trên URL thì cách tốt nhất bạn nên ép kiểu, chuyển nó về kiểu số INT, sau đó chuyển về kiểu STRING (nếu cần thiết). Sau khi chúng ta thực hiện ép kiểu và chuyển nó về int và string thì cho dù ta nhập bất kì ký tự nào cũng sẽ bị clear ra khỏi.
-   - Ví dụ: `$id = isset($_GET['id']) ? (string)(int)$_GET['id'] : false;`
+   - Ví dụ: 
+        
+            `$id = isset($_GET['id']) ? (string)(int)$_GET['id'] : false;`
+            
   - Hoặc là chúng ta có thể dùng hàm `str_replace` để xóa đi những ký tự không phải là chữ số
    - Ví dụ: 
    
