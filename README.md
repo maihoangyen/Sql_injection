@@ -295,15 +295,12 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
   - Hoặc là chúng ta có thể dùng hàm `str_replace` để xóa đi những ký tự không phải là chữ số
    - Ví dụ: 
              `$id = isset($_GET['id']) ? $_GET['id'] : false;
- 
-             $id = str_replace('/[^0-9]/', '', $id);`
+              $id = str_replace('/[^0-9]/', '', $id);`
              
   - Sử dụng hàm sprintf: Trả về một chuỗi được định dạng. Trong hàm này nó sẽ có 2 tham số: 1 là chuỗi và nó chứa một đoạn Regex để thay thế. 2 là giá trị được thay thế tương ứng.
    - Ví dụ: 
-             `$webname = 'hello';
-  
-             $title = 'Xin chào các bạn';
-             
+            `$webname = 'hello';
+             $title = 'Xin chào các bạn'; 
              echo sprintf('Website %s laf website %s', $webname, $title);`
  - Các tổ chức có thể tập trung vào những bước sau đây để bảo vệ mình khỏi những cuộc tấn công SQL Injection:
 
