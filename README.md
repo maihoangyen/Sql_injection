@@ -325,7 +325,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
             `$webname = 'hello';
              $title = 'Xin chào các bạn'; 
              echo sprintf('Website %s laf website %s', $webname, $title);`
- - Sử dụng các câu lệnh chuẩn bị sẵn: 
+ - Sử dụng các câu lệnh chuẩn bị sẵn (câu lệnh được tham số hóa). Các câu lệnh chuẩn bị sẵn cũng cung cấp khả năng bảo vệ mạnh mẽ chống lại SQL injection , vì các giá trị tham số không được nhúng trực tiếp vào bên trong chuỗi truy vấn SQL. Các giá trị tham số được gửi đến máy chủ cơ sở dữ liệu riêng biệt với truy vấn bằng cách sử dụng một giao thức khác và do đó không thể can thiệp vào nó. Máy chủ sử dụng các giá trị này trực tiếp tại điểm thực thi, sau khi mẫu câu lệnh được phân tích cú pháp. Đó là lý do tại sao các câu lệnh chuẩn bị ít bị lỗi hơn, và do đó được coi là một trong những yếu tố quan trọng nhất trong bảo mật cơ sở dữ liệu.
    - Tạo Truy vấn SELECT mySQL: để chọn dữ liệu từ một bảng bằng cách sử dụng câu lệnh chuẩn bị sẵn của mySQLi
    - Ví dụ:
    
