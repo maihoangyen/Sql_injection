@@ -20,7 +20,7 @@
  
        3.1 [Khái niệm sqli](#kns)
       
-       3.2 [Tại sao lỗ hổng sql injection tồn tại](#xa)
+       3.2 [sql injection xảy ra như thế nào. Tại sao lỗ hổng sql injection tồn tại](#xa)
       
        3.3 [Tác hại](#th)
        
@@ -268,20 +268,22 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
     - Tấn công: không mã hóa kí tự nhập
     - Tấn công: không kiểm tra kiểu dữ liệu nhập
 
- <br> 3.2 Tại sao lỗ hổng sql injection tồn tại <a name="xa"></a></br>
+ <br> 3.2 Sql injection xảy ra như thế nào. Tại sao lỗ hổng sql injection tồn tại <a name="xa"></a></br>
+   - Sqli xảy ra như thế nào:
+     - Ứng dụng thông thường sẽ nhận dữ liệu đầu vào của người dùng: Username và Password, dùng nó làm tham số truy vấn xuống cơ sở dữ liệu, kết quả truy vấn trả về cho phía người dùng. Lợi dụng dữ liệu đầu vào đó kẻ tấn công sẽ cố tình nhập Username hoặc Password một cách khác thường để tấn công vào các hệ quản trị cơ sở dữ liệu.
    - Một số nguyên nhân dẫn đến tồn tại lỗ hổng sql injection:
      - Không kiểm tra dữ liệu đầu vào:
        - Đây là dạng lỗi SQL Injection xảy ra khi thiếu đoạn mã kiểm tra dữ liệu đầu vào trong câu truy vấn SQL. Kết quả là người dùng cuối có thể thực hiện một số truy vấn không mong muốn đối với cơ sở dữ liệu của ứng dụng. `statement = "SELECT * FROM users WHERE user_name = '" + userName + "';"` Câu lệnh này sẽ trả về tên người dùng có trong bảng `user`. Tuy nhiên, nếu biến userName được nhập theo một cách có chủ ý, nó có thể trở thành một câu truy vấn SQL với mục đích khác hẳn so với mục đích của đoạn mã trên.
        - Ví dụ:
        
-                 `SELECT * FROM users WHERE name = '' or '1'='1';`
-                 
+                 `SELECT * FROM users WHERE name = '' or '1'='1';` 
+               
      - Xử lý không đúng kiểu:
        - Lỗi SQL injection dạng này thường xảy ra do lập trình viên định nghĩa đầu vào dữ liệu không rõ ràng hoặc thiếu bước kiểm tra và lọc kiểu dữ liệu đầu vào. Điều này có thể xảy ra khi một trường số được sử dụng trong truy vấn SQL nhưng lập trình viên lại thiếu bước kiểm tra dữ liệu đầu vào để xác minh kiểu của dữ liệu mà người dùng nhập vào có phải là số hay không.`statement = "SELECT * FROM data WHERE id = " + id_ + ";"` Ta có thể nhận thấy một cách rõ ràng mục đích của đoạn mã trên là nhập vào một số tương ứng với trường id. Tuy nhiên, người dùng cuối, thay vì nhập vào một số, họ lại nhập vào một chuỗi ký tự, và do vậy có thể trở thành một câu truy vấn SQL hoàn chỉnh mới mà bỏ qua ký tự thoát. Khi đó, nó sẽ thực hiện thao tác xóa toàn bộ bảng users ra khỏi cơ sở dữ liệu.
        - Ví dụ: 
            
                  `SELECT * FROM DATA WHERE id=1;DROP TABLE users`
-  
+       
      - Lỗi bảo mật bên trong máy chủ cơ sở dữ liệu:
        - Đôi khi lỗ hổng có thể tồn tại chính trong phần mềm máy chủ cơ sở dữ liệu, như là trường hợp hàm `mysql_real_escape_string()`của các máy chủ MySQL. Điều này sẽ cho phép kẻ tấn công có thể thực hiện một cuộc tấn công SQL injection thành công dựa trên những ký tự Unicode không thông thường ngay cả khi dữ liệu đầu vào đã được kiểm soát.
        
