@@ -312,32 +312,86 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
              $title = 'Xin chào các bạn'; 
              echo sprintf('Website %s laf website %s', $webname, $title);`
  - Sử dụng các câu lệnh chuẩn bị sẵn: 
-   - Tạo Truy vấn SELECT mySQL: để chọn dữ liệu từ một bảng bằng cách sử dụng Câu lệnh chuẩn bị sẵn của mySQLi
+   - Tạo Truy vấn SELECT mySQL: để chọn dữ liệu từ một bảng bằng cách sử dụng câu lệnh chuẩn bị sẵn của mySQLi
    - Ví dụ:
    
            `$name = $_GET['username'];
 
             if ($stmt = $mysqli->prepare("SELECT password FROM tbl_users WHERE name=?")) {
 
-            // Bind a variable to the parameter as a string. 
+            // Liên kết một biến với tham số dưới dạng chuỗi. 
+            $stmt->bind_param("s", $name);
+
+            // Thực hiện câu lệnh. 
+            $stmt->execute();
+
+            //  Lấy các biến từ truy vấn. 
+            $stmt->bind_result($pass);
+
+            // Tìm nạp dữ liệu. 
+            $stmt->fetch();
+
+            // Hiển thị dữ liệu. 
+            printf("Password for user %s is %s\n", $name, $pass);
+
+            // Đóng câu lệnh đã chuẩn bị. 
+            $stmt->close();
+
+            }`
+ - Tạo Truy vấn INSERT mySQL: để chèn dữ liệu từ một bảng bằng cách sử dụng câu lệnh chuẩn bị sẵn của mySQLi
+    - Ví dụ:
+
+           ` $name = $_GET['username'];
+             $password = $_GET['password'];
+
+             if ($stmt = $mysqli->prepare("INSERT INTO tbl_users (name, password) VALUES (?, ?)")) {
+
+             // Liên kết một biến với tham số dưới dạng chuỗi. 
+             $stmt->bind_param("ss", $name, $password);
+
+             // Thực hiện câu lệnh. 
+             $stmt->execute();
+
+             // Đóng câu lệnh đã chuẩn bị. 
+             $stmt->close();
+
+             }`
+ - Tạo Truy vấn UPDATE mySQL: để cập nhật dữ liệu từ một bảng bằng cách sử dụng câu lệnh chuẩn bị sẵn của mySQLi
+   - Ví dụ:
+   
+            `$name = $_GET['username'];
+             $password = $_GET['password'];
+
+             if ($stmt = $mysqli->prepare("UPDATE tbl_users SET password = ? WHERE name = ?")) {
+
+             //  Liên kết một biến với tham số dưới dạng chuỗi. 
+             $stmt->bind_param("ss", $password, $name);
+
+             // Thực hiện câu lệnh. 
+             $stmt->execute();
+
+            // Đóng câu lệnh đã chuẩn bị. 
+            $stmt->close();
+
+            }`
+ - Tạo Truy vấn DELETE mySQL: để xóa dữ liệu từ một bảng bằng cách sử dụng câu lệnh chuẩn bị sẵn của mySQLi
+   - Ví dụ:
+   
+           `$name = $_GET['username'];
+            $password = $_GET['password'];
+
+            if ($stmt = $mysqli->prepare("DELETE FROM tbl_users WHERE name = ?")) {
+
+            // Bind the variable to the parameter as a string. 
             $stmt->bind_param("s", $name);
 
             // Execute the statement.
             $stmt->execute();
 
-            // Get the variables from the query.
-            $stmt->bind_result($pass);
-
-            // Fetch the data.
-            $stmt->fetch();
-
-            // Display the data.
-            printf("Password for user %s is %s\n", $name, $pass);
-
             // Close the prepared statement.
             $stmt->close();
 
-            }`
+           }`
  - Các tổ chức có thể tập trung vào những bước sau đây để bảo vệ mình khỏi những cuộc tấn công SQL Injection:
 
    - Không bao giờ được tin tưởng những input người dùng nhập vào: Dữ liệu luôn phải được xác thực trước khi sử dụng trong các câu lệnh SQL.
