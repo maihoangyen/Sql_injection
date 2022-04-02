@@ -338,7 +338,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
             $stmt->close();
 
             }`
- ```- Tạo Truy vấn INSERT mySQL: để chèn dữ liệu từ một bảng bằng cách sử dụng câu lệnh chuẩn bị sẵn của mySQLi
+    - Tạo Truy vấn INSERT mySQL: để chèn dữ liệu từ một bảng bằng cách sử dụng câu lệnh chuẩn bị sẵn của mySQLi
     - Ví dụ:
 
            ` $name = $_GET['username'];
@@ -356,7 +356,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
              $stmt->close();
 
              }`
- ``- Tạo Truy vấn UPDATE mySQL: để cập nhật dữ liệu từ một bảng bằng cách sử dụng câu lệnh chuẩn bị sẵn của mySQLi
+   - Tạo Truy vấn UPDATE mySQL: để cập nhật dữ liệu từ một bảng bằng cách sử dụng câu lệnh chuẩn bị sẵn của mySQLi
    - Ví dụ:
    
             `$name = $_GET['username'];
@@ -374,7 +374,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
             $stmt->close();
 
             }`
- ``- Tạo Truy vấn DELETE mySQL: để xóa dữ liệu từ một bảng bằng cách sử dụng câu lệnh chuẩn bị sẵn của mySQLi
+   - Tạo Truy vấn DELETE mySQL: để xóa dữ liệu từ một bảng bằng cách sử dụng câu lệnh chuẩn bị sẵn của mySQLi
    - Ví dụ:
    
            `$name = $_GET['username'];
