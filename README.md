@@ -311,6 +311,33 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
             `$webname = 'hello';
              $title = 'Xin chào các bạn'; 
              echo sprintf('Website %s laf website %s', $webname, $title);`
+ - Sử dụng các câu lệnh chuẩn bị sẵn: 
+   - Tạo Truy vấn SELECT mySQL: để chọn dữ liệu từ một bảng bằng cách sử dụng Câu lệnh chuẩn bị sẵn của mySQLi
+   - Ví dụ:
+   
+           `$name = $_GET['username'];
+
+            if ($stmt = $mysqli->prepare("SELECT password FROM tbl_users WHERE name=?")) {
+
+            // Bind a variable to the parameter as a string. 
+            $stmt->bind_param("s", $name);
+
+            // Execute the statement.
+            $stmt->execute();
+
+            // Get the variables from the query.
+            $stmt->bind_result($pass);
+
+            // Fetch the data.
+            $stmt->fetch();
+
+            // Display the data.
+            printf("Password for user %s is %s\n", $name, $pass);
+
+            // Close the prepared statement.
+            $stmt->close();
+
+            }`
  - Các tổ chức có thể tập trung vào những bước sau đây để bảo vệ mình khỏi những cuộc tấn công SQL Injection:
 
    - Không bao giờ được tin tưởng những input người dùng nhập vào: Dữ liệu luôn phải được xác thực trước khi sử dụng trong các câu lệnh SQL.
