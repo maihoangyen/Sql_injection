@@ -2,7 +2,7 @@
  ## Họ và tên: Mai Thị Hoàng Yến
  ## Ngày báo cáo: Ngày 1/4/2022
  ### MỤC LỤC
- 1. [Cài đặt xampp, mysql. Tìm hiểu về database: information_schema](#gioithieu)
+ 1. [Tìm hiểu về database: information_schema](#gioithieu)
  
        1.1 [Khái niệm INFORMATION_SCHEMA](#kni)
       
@@ -287,10 +287,18 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
 
   - Tránh các URL không an toàn: Nếu một trang web không sử dụng Giao thức truyền siêu văn bản an toàn (HTTPS) hoặc sử dụng Lớp cổng bảo mật an toàn (SSL) và Bảo mật lớp truyền tải (TLS) để mã hóa. Những kẻ tấn công có thể sử dụng các URL chứa các cookie SQL Injection để giành quyền truy cập vào cơ sở dữ liệu của bạn. 
 
-  -  Điểm để tấn công chính là tham số truyền vào câu truy vấn. Do vậy, cần phải đảm bảo thực hiện việc kiểm tra dữ liệu truyền vào từ người dùng, để tránh người dùng nhập vào những nội dung khả năng gây ra ra sai lệch khi thực hiện truy vấn. Để kiểm tra dữ liệu từ người dùng, ta cần lọc bớt những nội dung nguy hiểm. Giải pháp cho việc lọc dữ liệu này là dùng chuỗi được escape (mã hóa). Lưu ý: mình sẽ dùng từ “escape” để chỉ việc mã hóa cho sát nghĩa.
+  -  Điểm để tấn công chính là tham số truyền vào câu truy vấn. Do vậy, cần phải đảm bảo thực hiện việc kiểm tra dữ liệu truyền vào từ người dùng, để tránh người dùng nhập vào những nội dung khả năng gây ra ra sai lệch khi thực hiện truy vấn. Để kiểm tra dữ liệu từ người dùng, ta cần lọc bớt những nội dung nguy hiểm. Giải pháp cho việc lọc dữ liệu này là dùng chuỗi được escape (mã hóa). 
 
   - Khi thực hiện escape một chuỗi, tức là mã hoá các kí tự đặc biệt của chuỗi (ví dụ như kí tự ‘, &, |, …) để nó không còn được hiểu là 1 kí tự đặc biệt nữa. Mỗi ngôn ngữ lập trình đều cung cấp các hàm để thực hiện escape chuỗi, trong `PHP` ta sẽ dùng hàm `mysqli_real_escape_string()` hoặc cũng khả năng dùng `addslashes()` để thực hiện điều này.
-
+  - Nhận dữ liệu kiểu INT: Khi chúng ta nhận dữ liệu ID trên URL thì cách tốt nhất bạn nên ép kiểu, chuyển nó về kiểu số INT, sau đó chuyển về kiểu STRING (nếu cần thiết). Sau khi chúng ta thực hiện ép kiểu và chuyển nó về int và string thì cho dù ta nhập bất kì ký tự nào cũng sẽ bị clear ra khỏi.
+   - Ví dụ: `$id = isset($_GET['id']) ? (string)(int)$_GET['id'] : false;`
+  - Hoặc là chúng ta có thể dùng hàm `str_replace` để xóa đi những ký tự không phải là chữ số
+   - Ví dụ: `$id = isset($_GET['id']) ? $_GET['id'] : false;
+             $id = str_replace('/[^0-9]/', '', $id);`
+  - Sử dụng hàm sprintf: Trả về một chuỗi được định dạng. Trong hàm này nó sẽ có 2 tham số: 1 là chuỗi và nó chứa một đoạn Regex để thay thế. 2 là giá trị được thay thế tương ứng.
+   - Ví dụ: `$webname = 'hello';
+             $title = 'Xin chào các bạn';`
+echo sprintf('Website %s laf website %s', $webname, $title);
   - Các tổ chức có thể tập trung vào những bước sau đây để bảo vệ mình khỏi những cuộc tấn công SQL Injection:
 
    - Không bao giờ được tin tưởng những input người dùng nhập vào: Dữ liệu luôn phải được xác thực trước khi sử dụng trong các câu lệnh SQL.
