@@ -455,7 +455,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
             } 
  
             $sql = "INSERT INTO MyGuests (firstname, lastname, email)
-            VALUES ('David', 'Vinh', 'vinhdavid@example.com')";
+            VALUES ('HY', 'Hyen', 'hyen@gmail.com')";
  
             if ($conn->query($sql) === TRUE) {
             echo "New record created successfully";
@@ -465,3 +465,82 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
  
             $conn->close();
             ?>`
+- Update:
+  
+           `<?php
+            $servername = "localhost";
+            $username = "username";
+            $password = "password";
+            $dbname = "myDB";
+ 
+            // tạo connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // kiểm tra connection
+            if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+            } 
+ 
+            $sql = "UPDATE MyGuests SET lastname='Tan' WHERE id=2";
+ 
+            if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully";
+            } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+ 
+            $conn->close();
+            ?>`
+ - Select:
+  
+           `<?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "1234567890";
+            $dbname = "myDB";
+ 
+            // tạo connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // kiểm connection
+            if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+            } 
+ 
+            $sql = "SELECT id, firstname, lastname FROM MyGuests";
+            $result = $conn->query($sql);
+ 
+            if ($result->num_rows > 0) {
+            // output dữ liệu trên trang
+            while($row = $result->fetch_assoc()) {
+            echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " "
+            . $row["lastname"]. "<br>";
+            }
+            } else {
+            echo "0 results";
+            }
+            $conn->close();
+            ?>`
+- Insert:
+  
+           `<?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "1234567890";
+            $dbname = "myDB";
+ 
+            // tạo connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // kiểm tra connection
+            if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+            } 
+ 
+            $sql = "DELETE FROM MyGuests WHERE id=3";
+ 
+            if ($conn->query($sql) === TRUE) {
+            echo "Record deleted successfully";
+            } else {
+            echo "Error deleting record: " . $sql . "<br>" . $conn->error;
+            }
+ 
+            $conn->close();
+            ?>`            
