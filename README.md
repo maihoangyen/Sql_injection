@@ -398,13 +398,13 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
 
             if ($stmt = $mysqli->prepare("DELETE FROM tbl_users WHERE name = ?")) {
 
-            // Bind the variable to the parameter as a string. 
+            // Liên kết một biến với tham số dưới dạng chuỗi.
             $stmt->bind_param("s", $name);
 
-            // Execute the statement.
+            // Thực hiện câu lệnh. 
             $stmt->execute();
 
-            // Close the prepared statement.
+            // Đóng câu lệnh đã chuẩn bị. 
             $stmt->close();
 
            }`
@@ -519,7 +519,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
             }
             $conn->close();
             ?>`
-- Insert:
+- Delete:
   
            `<?php
             $servername = "localhost";
