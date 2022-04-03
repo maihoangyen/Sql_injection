@@ -130,7 +130,7 @@
  </table>
  <br> 1.3 Các câu lệnh trong INFORMATION_SCHEMA<a name="cc"></a></br>
  
-  - Để Hiển thị TABLESvà COLUMNS trong cơ sở dữ liệu hoặc tìm TABLES và COLUMNS.Truy vấn đầu tiên này sẽ trả về tất cả các bảng trong cơ sở dữ liệu mà chúng ta đang truy vấn.
+  - Để Hiển thị TABLES và COLUMNS trong cơ sở dữ liệu hoặc tìm TABLES và COLUMNS.Truy vấn đầu tiên này sẽ trả về tất cả các bảng trong cơ sở dữ liệu mà chúng ta đang truy vấn.
 
     `SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES`
  
