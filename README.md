@@ -408,35 +408,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
             $stmt->close();
 
            }`
- - Các tổ chức có thể tập trung vào những bước sau đây để bảo vệ mình khỏi những cuộc tấn công SQL Injection:
-
-   - Không bao giờ được tin tưởng những input người dùng nhập vào: Dữ liệu luôn phải được xác thực trước khi sử dụng trong các câu lệnh SQL.
-   - Các thủ tục được lưu trữ: Những thủ tục này có thể trừu tượng hóa các lệnh SQL và xem xét toàn bộ input như các tham số. Nhờ đó, nó không thể gây ảnh hưởng đến cú pháp lệnh SQL.
-   - Các lệnh được chuẩn bị sẵn: Điều này bao gồm việc tạo truy vấn SQL như hành động đầu tiên và sau đó xử lý toàn bộ dữ liệu được gửi như những tham số.
-   - Những cụm từ thông dụng: Những cụm từ này được sử dụng để phát hiện mã độc và loại bỏ nó trước khi câu lệnh SQL được thực hiện.
-   - Thông báo lỗi đúng: Thông báo lỗi phải tuyệt đối tránh tiết lộ những thông tin/chi tiết nhạy cảm và vị trí xảy ra lỗi trên thông báo lỗi.
-   - Giới hạn quyền truy cập của người dùng đối với cơ sở dữ liệu: Chỉ những tài khoản có quyền truy cập theo yêu cầu mới được kết nối với cơ sở dữ liệu. Điều này có thể giúp giảm thiểu những lệnh SQL được thực thi tự động trên server.
-   - Hãy loại bỏ các kí tự meta như ‘”/\; và các kí tự extend như NULL, CR, LF, … trong các string nhận được từ:
-   
-     >input do người dùng đệ trình
      
-     >các tham số từ URL
-     
-     >các giá trị từ cookie
-     
-   - Đối với các giá trị numeric, hãy chuyển nó sang integer trước khi query SQL, hoặc dùng ISNUMERIC để chắc chắn nó là một số integer.
-   - Thay đổi “Startup and run SQL Server” dùng mức low privilege user trong tab SQL Server Security.
-   - Xóa các stored procedure trong database master mà không dùng như:
-   
-     >xp_cmdshell
-     
-     >xp_startmail
-     
-     >xp_sendmail
-     
-     >sp_makewebtask
-     
-
 #### 4. Cách nhúng sql vào php <a name="ca"></a>
 
   - Insert:
