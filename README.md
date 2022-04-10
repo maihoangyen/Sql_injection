@@ -164,7 +164,7 @@
   
       ![image](https://user-images.githubusercontent.com/101852647/161127145-1cea6ab4-c338-4b1a-99d5-bb187f37b544.png)
 
-  - B4: Tiếp theo sẽ sử dụng `nmap -Sv -T4 -p- 192.168.199.129` để liệt kê phiên bản của dịch vụ trên 2 cổng 22,80
+  - B4: Tiếp theo sẽ sử dụng `nmap -Sv -T4 -p 22,80 192.168.199.129` để liệt kê phiên bản của dịch vụ trên 2 cổng 22,80
   
       ![image](https://user-images.githubusercontent.com/101852647/161128195-b306e693-c808-4023-979d-40bb3b56480b.png)
 
