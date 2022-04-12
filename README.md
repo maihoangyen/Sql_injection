@@ -321,12 +321,12 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
     
             `$id = filter_input( INPUT_GET, 'id', FILTER_VALIDATE_INT);`
              
-  - Sử dụng hàm `sprintf`: Trả về một chuỗi được định dạng. Trong hàm này nó sẽ có 2 tham số: 1 là chuỗi và nó chứa một đoạn Regex để thay thế. 2 là giá trị được thay thế tương ứng.
+  - Sử dụng hàm `sprintf`: Trả về một chuỗi được định dạng. Trong hàm này nó sẽ có 2 tham số: 1 là chuỗi để thay thế. 2 là giá trị được thay thế tương ứng.
     - Ví dụ: 
    
             `$webname = 'hello';
              $title = 'Xin chào các bạn'; 
-             echo sprintf('Website %s laf website %s', $webname, $title);`
+             echo sprintf('Website %s la website %s', $webname, $title);`
  - Sử dụng các câu lệnh chuẩn bị sẵn (câu lệnh được tham số hóa). Các câu lệnh chuẩn bị sẵn cũng cung cấp khả năng bảo vệ mạnh mẽ chống lại SQL injection , vì các giá trị tham số không được nhúng trực tiếp vào bên trong chuỗi truy vấn SQL. Các giá trị tham số được gửi đến máy chủ cơ sở dữ liệu riêng biệt với truy vấn bằng cách sử dụng một giao thức khác và do đó không thể can thiệp vào nó. Máy chủ sử dụng các giá trị này trực tiếp tại điểm thực thi, sau khi mẫu câu lệnh được phân tích cú pháp.
    - Tạo Truy vấn SELECT mySQL: để chọn dữ liệu từ một bảng bằng cách sử dụng câu lệnh chuẩn bị sẵn của mySQLi
    - Ví dụ:
