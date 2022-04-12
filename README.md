@@ -249,7 +249,7 @@
   
       ![image](https://user-images.githubusercontent.com/101852647/161137731-fe2a9ddc-8649-472c-9ae7-77d21c84308e.png)
 
-  - B12: Sau khi chỉnh sửa chúng ta đã tải thành công file `shell.php`
+  - B12: Sau khi chỉnh sửa chúng ta đã tải thành công file `shell.PHP`
   
       ![image](https://user-images.githubusercontent.com/101852647/161137847-7927c9f6-ee2a-420c-8f47-70e786a4764a.png)
 
