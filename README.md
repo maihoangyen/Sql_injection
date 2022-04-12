@@ -517,7 +517,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
             $conn->close();
             ?>`            
 #### 5. Tìm hiểu về các hàm <a name="ca"></a>
-  - `mysqli_real_escape_string()`: thoát các ký tự đặc biệt trong một chuỗi để sử dụng trong truy vấn SQL, có tính đến bộ ký tự hiện tại của kết nối.
-  - `str_replace`: Trả về một chuỗi hoặc một mảng với các giá trị được thay thế
+  - `mysqli_real_escape_string()`: thoát các ký tự đặc biệt trong một chuỗi để sử dụng trong truy vấn SQL.
+  - `str_replace`: Trả về một chuỗi hoặc một mảng với các giá trị được thay thế.
   - `filter_input`: để xác thực các biến từ các nguồn không an toàn. Nó sẽ nhận một biến bên ngoài và tùy chọn lọc nó.
-  - `sprintf`:ghi một chuỗi được định dạng vào một biến
+  - `sprintf`:ghi một chuỗi được định dạng vào một biến.
