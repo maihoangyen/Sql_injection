@@ -146,8 +146,6 @@
   
     `IF EXISTS( SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE COLUMN_NAME = 'Title')
      SELECT 'found' AS search_result ELSE SELECT 'not found' AS search_result;`
-    
-  - Sử dụng INFORMATION_SCHEMA chế độ xem trong nguồn dữ liệu của chúng ta có thể là một cách đáng tin cậy để xác định những gì có trong nguồn dữ liệu trong khi chúng ta xây dựng các truy vấn của mình.
   
 #### 2. Thực hành lab <a name="tha"></a>
  <br> 2.1 Phương pháp thủ công <a name="thucong"></a></br>
