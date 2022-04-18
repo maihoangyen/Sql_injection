@@ -283,7 +283,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
                  `SELECT * FROM DATA WHERE id=1;DROP TABLE users`
        
      - Lỗi bảo mật bên trong máy chủ cơ sở dữ liệu:
-       - Đôi khi lỗ hổng có thể tồn tại chính trong phần mềm máy chủ cơ sở dữ liệu, như là trường hợp hàm `mysql_real_escape_string()`của các máy chủ MySQL. Điều này sẽ cho phép kẻ tấn công có thể thực hiện một cuộc tấn công SQL injection thành công dựa trên những ký tự Unicode không thông thường ngay cả khi dữ liệu đầu vào đã được kiểm soát.
+       - Đôi khi lỗ hổng có thể tồn tại chính trong phần mềm máy chủ cơ sở dữ liệu. Điều này sẽ cho phép kẻ tấn công có thể thực hiện một cuộc tấn công SQL injection thành công dựa trên những ký tự Unicode không thông thường ngay cả khi dữ liệu đầu vào đã được kiểm soát.
        
  <br> 3.3 Tác hại <a name="th"></a></br>
   - Thông tin đăng nhập bị đánh cắp: Sử dụng SQL Injection để tìm kiếm thông tin đăng nhập người dùng. Sau đó, những kẻ tấn công có thể mạo danh người dùng, sử dụng và thay đổi các quyền hạn của người dùng sẵn có.
