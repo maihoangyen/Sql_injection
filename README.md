@@ -309,7 +309,7 @@ Một cách nôm na, ta khả năng hiểu tấn công SQL injection là việc 
         
             `$id = isset($_GET['id']) ? (string)(int)$_GET['id'] : false;`
             
-  - Hoặc là chúng ta có thể dùng hàm `str_replace` để xóa đi những ký tự không phải là chữ số
+  - Hoặc là chúng ta có thể dùng hàm `str_replace` để trả về một chuỗi hoặc một mảng với các giá trị được thay thế
     - Ví dụ: 
    
             `$id = isset($_GET['id']) ? $_GET['id'] : false;
